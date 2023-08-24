@@ -4,9 +4,12 @@ var Handlers = map[string]func([]Value) Value{
 	"PING": ping,
 	"SET":  set,
 	"GET":  get,
+	"HSET": hset,
+	"HGET": hget,
 }
 
 var SETs = map[string]string{}
+var HSETs = map[string]map[string]string{}
 
 // PING Command
 func ping(args []Value) Value {
@@ -36,6 +39,42 @@ func get(args []Value) Value {
 	key := args[0].bulk
 
 	value, ok := SETs[key]
+
+	if !ok {
+		return Value{typ: "null"}
+	}
+
+	return Value{typ: "bulk", bulk: value}
+}
+
+func hset(args []Value) Value {
+	if len(args) != 3 {
+		return Value{typ: "error", str: "ERR wrong number for HSET args"}
+	}
+
+	hash := args[0].bulk
+	key := args[1].bulk
+	value := args[2].bulk
+
+	if _, ok := HSETs[hash]; !ok {
+		HSETs[hash] = map[string]string{}
+	}
+
+	HSETs[hash][key] = value
+
+	return Value{typ: "string", str: "OK"}
+}
+
+func hget(args []Value) Value {
+
+	if len(args) != 2 {
+		return Value{typ: "error", str: "ERR wrong number for HGET args"}
+	}
+
+	hash := args[0].bulk
+	key := args[1].bulk
+
+	value, ok := HSETs[hash][key]
 
 	if !ok {
 		return Value{typ: "null"}
