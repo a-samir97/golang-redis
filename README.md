@@ -1,16 +1,17 @@
 # Golang Redis 
-- Building Redis database using Golang 
+- Building Redis database using Golang
 
 ## Commands 
-- `PING`
-- `SET name ahmed`
-- `GET name`
-- `HSET users num_1 ahmed`
-- `HGET users num_1`
-
+- `PING` -> `PONG`
+- `SET name ahmed` -> `OK`
+- `GET name` -> `ahmed`
+- `HSET users num_1 ahmed` -> `OK`
+- `HGET users num_1` -> `ahmed`
+- `HGETALL users` -> `ahmed`
    
-# How to run the project ? 
-- in progress
+# How to run the project ?
+- `go run *.go` to run redis server
+- `redis-cli` to run redis client (here you put your commands)
 
 
 # Tools
