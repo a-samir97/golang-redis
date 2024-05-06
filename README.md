@@ -1,7 +1,11 @@
-# Golang Redis 
+## What is the project ?
 - Building Redis database using Golang
 
-## Commands 
+## Objectives
+- Learn more about `Redis` Internals
+- Learn and get famillar with `Golang`
+
+## Working Commands 
 - `PING` -> `PONG`
 - `SET name ahmed` -> `OK`
 - `GET name` -> `ahmed`
@@ -9,15 +13,15 @@
 - `HGET users num_1` -> `ahmed`
 - `HGETALL users` -> `ahmed`
    
-# How to run the project ?
+## How to run the project ?
 - `go run *.go` to run redis server
 - `redis-cli` to run redis client (here you put your commands)
 
 
-# Tools
+## Tools
   - Golang
   - Redis client
 
 
-# ScreenShots
-  - in progress 
+## References:
+   - https://www.build-redis-from-scratch.dev/en/introduction
